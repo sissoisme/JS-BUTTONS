@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .falling {
+            position: absolute;
+            top: -150px;
+            right: 500px;
+            
+            animation: falling 2.5s ease-in alternate;
+            visibility: hidden;
+        }
+
+        .color1 {
+            background-color: red;
+        }
+
+        .color2 {
+            background-color: blue;
+        }
+
+        .color3 {
+            background-color: yellow;
+        }
+
+        .color4 {
+            background-color: pink;
+        }
+
+        .color5 {
+            background-color: orange;
+        }
+
+        .shape1 {
+            border-radius: 50px;
+        }
+
+        .shape2 {
+            border-radius: none;
+        }
+
+        .shape3 {
+            width: 100px;
+            height: 100px;
+        }
+        .position1{            right: 500px !important; }
+        .position2{            right: 300px !important;}
+        .position3{             right: 700px !important;}
+        .rotate1{transform:rotate(0deg);}
+        .rotate2{transform:rotate(15deg);}
+        .rotate3{transform:rotate(30deg);}
+        .rotate4{transform:rotate(-15deg);}
+        .rotate5{transform:rotate(-30deg);}
+        
+        @keyframes falling {
+            0% {
+                
+                
+                visibility: visible;
+            }
+
+            100% {
+                top: 900px;
+            }
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div id="here">
+        <button id="oldB">
+            click me to creat more buttons
+
+        </button>
+    </div>
+</body>
+<script>
+    let oldB = document.getElementById('oldB');
+    let index = 1
+    oldB.addEventListener('click', function () {
+        const newButton = document.createElement('button');
+        newButton.id = 'newB' + index;
+        newButton.className = 'falling';
+        newButton.innerText = 'Im the new Guy';
+        document.querySelector('div').appendChild(newButton);
+        let randomColor = Math.random();
+        let randomShape = Math.random();
+        let randomPosition = Math.random();
+        let randomRotate =Math.random();
+
+
+        if (randomPosition <= 0.33) {
+            document.getElementById('newB' + index).classList.add('position1');
+        } else if (randomPosition <= 0.67) {
+            document.getElementById('newB' + index).classList.add('position2');
+        } else {
+            document.getElementById('newB' + index).classList.add('position3');
+        }
+        
+        if (randomShape <= 0.33) {
+            document.getElementById('newB' + index).classList.add('shape1');
+        } else if (randomShape <= 0.67) {
+            document.getElementById('newB' + index).classList.add('shape2');
+        } else {
+            document.getElementById('newB' + index).classList.add('shape3');
+        }
+
+
+
+
+        if (randomColor <= 0.2) {
+            document.getElementById('newB' + index).classList.add('color1');
+        } else if (randomColor <= 0.4) {
+            document.getElementById('newB' + index).classList.add('color2');
+        } else if (randomColor <= 0.6) {
+            document.getElementById('newB' + index).classList.add('color3');
+        } else if (randomColor <= 0.8) {
+            document.getElementById('newB' + index).classList.add('color4');
+        } else {
+            document.getElementById('newB' + index).classList.add('color5');
+        }
+
+        if (randomRotate <= 0.2) {
+            document.getElementById('newB' + index).classList.add('rotate1');
+        } else if (randomRotate <= 0.4) {
+            document.getElementById('newB' + index).classList.add('rotate2');
+        } else if (randomRotate <= 0.6) {
+            document.getElementById('newB' + index).classList.add('rotate3');
+        } else if (randomRotate <= 0.8) {
+            document.getElementById('newB' + index).classList.add('rotate4');
+        } else {
+            document.getElementById('newB' + index).classList.add('rotate5');
+        }
+
+
+
+
+
+        index++
+
+    });
+</script>
+
+</html>
